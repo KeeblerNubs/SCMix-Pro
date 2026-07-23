@@ -2,6 +2,15 @@
 
 Browser extension concept for SoundCloud-style AutoDJ mixing.
 
+
+## Project manifest
+
+The repository includes a root `package.json` so JavaScript tooling can detect the SCMix Pro package metadata and run the included manifest validation script:
+
+```sh
+npm test
+```
+
 ## Mixing engine
 
 The starter now includes a Web Audio powered mixing engine in `app/mixing-engine.js`:
