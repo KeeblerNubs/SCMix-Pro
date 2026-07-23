@@ -155,7 +155,10 @@ export class MixingEngine extends EventTarget {
     this.crossfadeSeconds = crossfadeSeconds;
     this.master = this.audioContext.createGain();
     this.master.gain.value = 1;
+    this.streamDestination = this.audioContext.createMediaStreamDestination();
+    this.externalInputs = new Set();
     this.master.connect(this.audioContext.destination);
+    this.master.connect(this.streamDestination);
     this.decks = [new MixerDeck(this.audioContext, 'A'), new MixerDeck(this.audioContext, 'B')];
     this.decks.forEach((deck) => deck.connect(this.master));
     this.activeDeckIndex = 0;
@@ -190,6 +193,37 @@ export class MixingEngine extends EventTarget {
 
   setMasterGain(value) {
     createParamScheduler(this.master.gain, clamp(value, 0, 1), this.audioContext.currentTime, 0.03);
+  }
+
+  getOutputStream() {
+    return this.streamDestination.stream;
+  }
+
+  connectExternalStream(stream, { label = 'External audio', gain = 1 } = {}) {
+    if (!(stream instanceof MediaStream)) {
+      throw new TypeError('External audio source must be a MediaStream.');
+    }
+
+    const source = this.audioContext.createMediaStreamSource(stream);
+    const inputGain = this.audioContext.createGain();
+    inputGain.gain.value = clamp(gain, 0, 1);
+    source.connect(inputGain);
+    inputGain.connect(this.master);
+
+    const input = {
+      label,
+      source,
+      gain: inputGain,
+      stream,
+      disconnect: () => {
+        source.disconnect();
+        inputGain.disconnect();
+        this.externalInputs.delete(input);
+      },
+    };
+    this.externalInputs.add(input);
+    this.dispatchEvent(new CustomEvent('externalinput', { detail: { label } }));
+    return input;
   }
 
   setCrossfade(position, { atTime = this.audioContext.currentTime, rampSeconds = 0.03 } = {}) {
