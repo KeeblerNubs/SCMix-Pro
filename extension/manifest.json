@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "SCMix Pro",
+  "version": "0.1.0",
+  "description": "AutoDJ mixer concept",
+  "permissions": ["storage","activeTab","scripting"],
+  "action": { "default_popup": "popup.html" }
+}

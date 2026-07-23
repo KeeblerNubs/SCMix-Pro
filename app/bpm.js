@@ -1,0 +1,1 @@
+export function detectBPM(){ return 128; }
