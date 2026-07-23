@@ -1,0 +1,19 @@
+{
+  "name": "scmix-pro",
+  "version": "0.1.0",
+  "description": "Browser extension concept for SoundCloud-style AutoDJ mixing.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "validate:manifest": "node -e \"JSON.parse(require('node:fs').readFileSync('extension/manifest.json', 'utf8')); console.log('extension/manifest.json is valid JSON')\"",
+    "test": "npm run validate:manifest"
+  },
+  "keywords": [
+    "autodj",
+    "browser-extension",
+    "soundcloud",
+    "webaudio",
+    "zoom"
+  ],
+  "license": "UNLICENSED"
+}
