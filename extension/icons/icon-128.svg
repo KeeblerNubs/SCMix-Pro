@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="SCMix Pro icon">
+  <rect width="128" height="128" rx="16" fill="#f5a623"/>
+  <circle cx="64.0" cy="64.0" r="53.76" fill="#1a1a2e" opacity="0.18"/>
+  <path d="M 23.04 87.04 C 43.52 61.44, 84.48 110.08, 104.96 43.52" fill="none" stroke="#1a1a2e" stroke-width="10" stroke-linecap="round"/>
+  <text x="50%" y="58%" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58.88" font-weight="700" fill="#1a1a2e">S</text>
+</svg>

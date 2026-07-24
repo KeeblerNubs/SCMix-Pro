@@ -1,15 +1,15 @@
-import { getMixingEngine, startAutoMix, stopAutoMix } from '../app/automix.js';
+import { getMixingEngine, startAutoMix, stopAutoMix } from './lib/automix.js';
 import {
   getZoomSetupChecklist,
   startBrowserAudioShare,
   stopBrowserAudioShare,
-} from '../app/zoom-audio-bridge.js';
+} from './lib/zoom-audio-bridge.js';
 
 const status = document.querySelector('#status');
 const automix = document.querySelector('#automix');
 const stop = document.querySelector('#stop');
-const shareBrowserAudio = document.querySelector('#share-browser-audio');
-const stopBrowserAudio = document.querySelector('#stop-browser-audio');
+const shareAudio = document.querySelector('#share-browser-audio');
+const stopAudio = document.querySelector('#stop-browser-audio');
 const zoomChecklist = document.querySelector('#zoom-checklist');
 
 function setStatus(message) {
@@ -36,8 +36,8 @@ stop.addEventListener('click', () => {
   setStatus('Mix stopped.');
 });
 
-shareBrowserAudio.addEventListener('click', async () => {
-  setStatus('Starting browser audio capture without screen video...');
+shareAudio.addEventListener('click', async () => {
+  setStatus('Starting browser audio capture without screen video…');
   try {
     const mixer = getMixingEngine();
     await startBrowserAudioShare(mixer);
@@ -47,9 +47,7 @@ shareBrowserAudio.addEventListener('click', async () => {
   }
 });
 
-stopBrowserAudio.addEventListener('click', () => {
+stopAudio.addEventListener('click', () => {
   stopBrowserAudioShare();
   setStatus('Browser audio sharing stopped.');
 });
-
-console.log('SCMix Pro mixing engine loaded');
