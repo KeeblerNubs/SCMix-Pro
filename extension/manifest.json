@@ -12,11 +12,14 @@
     "activeTab",
     "scripting",
     "storage",
-    "tabCapture"
+    "tabCapture",
+    "identity"
   ],
   "host_permissions": [
     "https://soundcloud.com/*",
-    "https://w.soundcloud.com/*"
+    "https://w.soundcloud.com/*",
+    "https://secure.soundcloud.com/*",
+    "https://api.soundcloud.com/*"
   ],
   "action": {
     "default_popup": "popup.html",

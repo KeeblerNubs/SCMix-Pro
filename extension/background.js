@@ -1,5 +1,4 @@
-// Minimal service worker to keep the extension alive and handle tabCapture
-// from a persistent context. The real work still happens in popup.js.
+// SCMix Pro — Service Worker
 
 chrome.runtime.onInstalled.addListener(() => {
   console.log('[SCMix Pro] Extension installed / updated.');
