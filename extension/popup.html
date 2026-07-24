@@ -1,22 +1,58 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h2>SCMix Pro</h2>
-    <p id="status">Mixing engine ready.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SCMix Pro</title>
+  <style>
+    body {
+      width: 380px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 16px;
+      background: #1a1a2e;
+      color: #e0e0e0;
+    }
+    h1 { font-size: 18px; margin: 0 0 12px; color: #f5a623; }
+    h2 { font-size: 14px; margin: 16px 0 8px; color: #bbb; }
+    p { margin: 4px 0; font-size: 13px; }
+    button {
+      background: #f5a623;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+    button:hover { background: #ffb84d; }
+    button.danger { background: #c0392b; color: #fff; }
+    button.danger:hover { background: #e74c3c; }
+    ul { font-size: 12px; padding-left: 18px; line-height: 1.6; }
+    #status { font-style: italic; color: #aaa; margin-top: 12px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>SCMix Pro</h1>
+
+  <p id="status">Mixing engine ready.</p>
+
+  <div>
     <button id="automix">Auto Mix</button>
-    <button id="stop">Stop</button>
+    <button id="stop" class="danger">Stop</button>
+  </div>
 
-    <section aria-labelledby="zoom-audio-heading">
-      <h3 id="zoom-audio-heading">Zoom Musician Audio</h3>
-      <p>
-        Route SCMix Pro into Zoom with Original Sound for Musicians, High fidelity music mode,
-        Stereo audio, and Echo cancellation enabled for clear HD audio.
-      </p>
-      <button id="share-browser-audio">Share Browser Audio Only</button>
-      <button id="stop-browser-audio">Stop Browser Audio</button>
-      <ul id="zoom-checklist"></ul>
-    </section>
+  <h2>Zoom Musician Audio</h2>
+  <p>Route SCMix Pro into Zoom with Original Sound for Musicians, High fidelity music mode, Stereo audio, and Echo cancellation enabled for clear HD audio.</p>
 
-    <script type="module" src="popup.js"></script>
-  </body>
+  <div>
+    <button id="share-browser-audio">Share Browser Audio Only</button>
+    <button id="stop-browser-audio" class="danger">Stop Browser Audio</button>
+  </div>
+
+  <ul id="zoom-checklist"></ul>
+
+  <script type="module" src="popup.js"></script>
+</body>
 </html>
