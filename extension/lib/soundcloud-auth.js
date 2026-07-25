@@ -67,7 +67,7 @@ export async function signIn(clientId, clientSecret) {
 
   const codeVerifier = generateCodeVerifier();
   const codeChallenge = await generateCodeChallenge(codeVerifier);
-  const redirectUri = chrome.identity.getRedirectURI('scmix-auth');
+  const redirectUri = chrome.identity.getRedirectURL('scmix-auth');
   const state = generateCodeVerifier();
 
   const params = new URLSearchParams({
